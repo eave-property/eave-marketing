@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E28P3WD3XB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E28P3WD3XB', { linker: { domains: ['eavehome.app', 'app.eavehome.app'] } });
+    // Cross-domain + conversion: fire a GA4 event on any click through to the app
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href*="app.eavehome.app"]') : null;
+      if (a) gtag('event', 'app_cta_click', { cta_text: (a.textContent || '').trim().slice(0, 80), page_path: location.pathname });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delete your Eave account or data — Eave</title>
+  <meta name="description" content="How to delete specific data or your whole Eave account (Eave Property LLC), in the app or without signing in, what is deleted, and what is kept and for how long.">
+  <link rel="canonical" href="https://eavehome.app/delete-account">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eavehome.app/delete-account">
+  <meta property="og:site_name" content="Eave">
+  <meta property="og:title" content="Delete your Eave account or data — Eave">
+  <meta property="og:description" content="How to delete specific data or your whole Eave account (Eave Property LLC), in the app or without signing in, what is deleted, and what is kept and for how long.">
+  <meta property="og:image" content="https://eavehome.app/og/privacy.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Delete your Eave account or data — Eave">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Delete your Eave account or data — Eave">
+  <meta name="twitter:description" content="How to delete specific data or your whole Eave account (Eave Property LLC), in the app or without signing in, what is deleted, and what is kept and for how long.">
+  <meta name="twitter:image" content="https://eavehome.app/og/privacy.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/support.css">
+  <style>
+    .doc h2, .doc h3 { scroll-margin-top: 84px; }
+    .toc { position: static; z-index: auto; -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--surface); border: 1px solid var(--stone); border-radius: var(--chamfer); padding: 18px 22px; margin-bottom: 36px; }
+    .toc p { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; }
+    .toc ol { margin: 0 0 0 20px; }
+    .toc li { font-size: 14px; margin-bottom: 6px; }
+    .callout { background: var(--surface); border: 1px solid var(--stone); border-radius: var(--chamfer); padding: 16px 20px; margin: 12px 0 22px; }
+    .callout p { margin-bottom: 0; }
+    .table-wrap { overflow-x: auto; margin: 8px 0 18px; }
+    .retention { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; }
+    .retention caption { text-align: left; font-size: 13px; color: var(--muted); padding-bottom: 8px; }
+    .retention th, .retention td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--stone); color: var(--muted); line-height: 1.6; }
+    .retention th { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink); background: var(--surface); }
+    .retention td:first-child { color: var(--ink); font-weight: 600; }
+    .retention td:nth-child(2) { white-space: nowrap; }
+    .del-form { max-width: 560px; background: var(--surface); border: 1px solid var(--stone); border-radius: var(--chamfer); padding: 24px; margin: 16px 0 8px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .form-label { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); }
+    .form-hint { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .form-input, .form-textarea { background: var(--bg); border: 1px solid #857E78; border-radius: 10px; color: var(--ink); font-family: 'IBM Plex Mono', monospace; font-size: 14px; padding: 12px 14px; width: 100%; min-height: 44px; }
+    .form-input:focus-visible, .form-textarea:focus-visible { outline: 2px solid var(--jade-text); outline-offset: 2px; border-color: var(--jade); }
+    .form-input[aria-invalid="true"] { border-color: #A8442F; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .del-form .btn { min-height: 44px; font-size: 14px; letter-spacing: 0; border-radius: 12px; padding: 12px 22px; font-weight: 600; }
+    .del-form .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .form-error { font-size: 14px; color: #A8442F; margin: 0; line-height: 1.6; }
+    .form-error:not([hidden]) { margin-top: 6px; }
+    #d-form-error:not([hidden]) { margin-top: 14px; }
+    .form-success { max-width: 560px; background: var(--surface); border: 1px solid var(--jade); border-radius: var(--chamfer); padding: 18px 20px; font-size: 14px; color: var(--ink); line-height: 1.7; margin: 16px 0 8px; }
+    [hidden] { display: none !important; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .alt { margin-top: 16px; }
+    .address { font-style: normal; font-size: 14px; color: var(--muted); line-height: 1.8; }
+    @media (max-width: 600px) { .del-form { padding: 18px; } }
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Delete your Eave account or data — Eave","description":"How to delete specific data or your whole Eave account (Eave Property LLC), in the app or without signing in, what is deleted, and what is kept and for how long.","url":"https://eavehome.app/delete-account","isPartOf":{"@type":"WebSite","name":"Eave","url":"https://eavehome.app/"},"publisher":{"@type":"Organization","name":"Eave Property LLC","address":{"@type":"PostalAddress","streetAddress":"1282 Woodside Dr","addressLocality":"San Luis Obispo","addressRegion":"CA","postalCode":"93401","addressCountry":"US"}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://eavehome.app/"},
+    {"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://eavehome.app/delete-account"}
+  ]}
+  </script>
+  <link rel="stylesheet" href="/assets/a11y.css">
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="wordmark">eave</a>
+      <ul class="nav-links">
+        <li class="nav-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Products <span class="nav-caret">&#9662;</span></button>
+          <ul class="nav-dropdown-menu nav-worlds">
+            <li class="nav-group">Property upkeep</li>
+            <li class="nav-item"><a href="/residential">Residential Upkeep<span class="nav-app"> &middot; for homeowners</span></a></li>
+            <li class="nav-item"><a href="/commercial">Commercial Upkeep<span class="nav-app"> &middot; for businesses &amp; nonprofits</span></a></li>
+            <li class="nav-group">Property transactions</li>
+            <li class="nav-item"><a href="/buyers">Buyers<span class="nav-app"> &middot; before you own it</span></a></li>
+            <li class="nav-item"><a href="/sellers">Sellers<span class="nav-app"> &middot; getting ready to sell</span></a></li>
+            <li class="nav-item"><a href="/partners">Partners<span class="nav-app"> &middot; for agents &amp; inspectors</span></a></li>
+            <li class="nav-group">Add-ons</li>
+            <li class="nav-addon"><a href="/features/guardian">Guardian<span class="nav-app"> &middot; protection for Residential, coming soon</span></a></li>
+            <li class="nav-addon"><a href="/pro">Pro<span class="nav-app"> &middot; home concierge</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Features <span class="nav-caret">&#9662;</span></button>
+          <ul class="nav-dropdown-menu nav-worlds">
+            <li class="nav-group">Bring it in</li>
+            <li class="nav-item"><a href="/features/connected-sources">Sources<span class="nav-app"> &middot; accounts you link, things you hand over</span></a></li>
+            <li class="nav-item"><a href="/features/capture">Capture<span class="nav-app"> &middot; say it, snap it, and the project builds itself</span></a></li>
+            <li class="nav-item"><a href="/features/documents">Document intelligence<span class="nav-app"> &middot; any paper, read into facts</span></a></li>
+            <li class="nav-group">Know the home</li>
+            <li class="nav-item"><a href="/features/home-knowledge-base">Home knowledge graph<span class="nav-app"> &middot; the whole property, connected</span></a></li>
+            <li class="nav-item"><a href="/features/product-knowledge">Product knowledge graph<span class="nav-app"> &middot; what the maker knows about your model</span></a></li>
+            <li class="nav-item"><a href="/features/place">Place intelligence<span class="nav-app"> &middot; the ground and the county</span></a></li>
+            <li class="nav-group">Decide what&rsquo;s next</li>
+            <li class="nav-item"><a href="/features/intelligence">Plans and priorities<span class="nav-app"> &middot; the score, the plan, this week</span></a></li>
+            <li class="nav-item"><a href="/features/diy-or-pro">DIY or pro<span class="nav-app"> &middot; every job planned both ways</span></a></li>
+            <li class="nav-item" style="border-top:1px solid var(--stone);margin-top:6px;padding-top:4px;"><a href="/features">All features &rarr;</a></li>
+          </ul>
+        </li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li class="nav-dropdown nav-dropdown-right">
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Resources <span class="nav-caret">&#9662;</span></button>
+          <ul class="nav-dropdown-menu">
+            <li><a href="/guides">Guides</a></li>
+            <li><a href="/support">Support</a></li>
+            <li><a href="/support/getting-started">Getting started</a></li>
+            <li><a href="/support/data-privacy">Data &amp; privacy</a></li>
+          </ul>
+        </li>
+        <li><a href="/about">About</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://app.eavehome.app/login" class="btn btn-outline" style="padding:9px 18px;font-size: 12px;">Sign in</a>
+        <a href="https://app.eavehome.app/login?mode=signup" class="btn btn-jade" style="padding:9px 18px;font-size: 12px;">Start free →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-label">Property upkeep</div>
+    <a href="/residential" onclick="closeMobile()">Residential Upkeep<span class="nav-app"> &middot; for homeowners</span></a>
+    <a href="/commercial" onclick="closeMobile()">Commercial Upkeep<span class="nav-app"> &middot; for businesses &amp; nonprofits</span></a>
+    <div class="mobile-menu-label">Property transactions</div>
+    <a href="/buyers" onclick="closeMobile()">Buyers<span class="nav-app"> &middot; before you own it</span></a>
+    <a href="/sellers" onclick="closeMobile()">Sellers<span class="nav-app"> &middot; getting ready to sell</span></a>
+    <a href="/partners" onclick="closeMobile()">Partners<span class="nav-app"> &middot; for agents &amp; inspectors</span></a>
+    <div class="mobile-menu-label">Add-ons</div>
+    <a href="/features/guardian" class="nav-addon" onclick="closeMobile()">Guardian<span class="nav-app"> &middot; protection for Residential, coming soon</span></a>
+    <a href="/pro" class="nav-addon" onclick="closeMobile()">Pro<span class="nav-app"> &middot; home concierge</span></a>
+    <div class="mobile-menu-label">Features</div>
+    <a href="/features/connected-sources" onclick="closeMobile()">Sources</a>
+    <a href="/features/capture" onclick="closeMobile()">Capture</a>
+    <a href="/features/documents" onclick="closeMobile()">Document intelligence</a>
+    <a href="/features/home-knowledge-base" onclick="closeMobile()">Home knowledge graph</a>
+    <a href="/features/product-knowledge" onclick="closeMobile()">Product knowledge graph</a>
+    <a href="/features/place" onclick="closeMobile()">Place intelligence</a>
+    <a href="/features/intelligence" onclick="closeMobile()">Plans and priorities</a>
+    <a href="/features/diy-or-pro" onclick="closeMobile()">DIY or pro</a>
+    <a href="/features" onclick="closeMobile()">All features &rarr;</a>
+    <div class="mobile-menu-label">Explore</div>
+    <a href="/pricing" onclick="closeMobile()">Pricing</a>
+    <div class="mobile-menu-label">Resources</div>
+    <a href="/guides" onclick="closeMobile()">Guides</a>
+    <a href="/support" onclick="closeMobile()">Support</a>
+    <a href="/support/getting-started" onclick="closeMobile()">Getting started</a>
+    <a href="/support/data-privacy" onclick="closeMobile()">Data &amp; privacy</a>
+    <a href="/about" onclick="closeMobile()">About</a>
+    <a href="https://app.eavehome.app/login" onclick="closeMobile()">Sign in</a>
+    <a href="https://app.eavehome.app/login?mode=signup" class="btn btn-jade" style="margin-top:16px;display:inline-block;" onclick="closeMobile()">Start free →</a>
+  </div>
+  <div id="content" tabindex="-1"></div>
+
+  <main id="main">
+  <!-- ── BREADCRUMB ── -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><span aria-current="page">Delete your account or data</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <div class="page-hero">
+    <div class="container">
+      <p class="label">Legal</p>
+      <h1>Delete your Eave account or data (Eave Property LLC)</h1>
+      <p>Eave, the home upkeep app on the App Store, Google Play and app.eavehome.app, is made by Eave Property LLC. This page explains how to delete some of your data or your whole account, in the app or without signing in, and what we keep afterwards and for how long.</p>
+    </div>
+  </div>
+
+  <!-- ── DOCUMENT ── -->
+  <section class="support-section">
+    <div class="container">
+      <div class="doc">
+
+      <nav class="toc" aria-labelledby="toc-heading">
+        <p id="toc-heading">On this page</p>
+        <ol>
+          <li><a href="#specific-data">Delete specific data</a></li>
+          <li><a href="#whole-account">Delete your whole account</a></li>
+          <li><a href="#request">Request deletion without the app</a></li>
+          <li><a href="#deleted">What gets deleted</a></li>
+          <li><a href="#kept">What we keep, and for how long</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="specific-data">1. Delete specific data</h2>
+      <p>You can remove individual records at any time and keep your account. The steps are the same on the web app at <a href="https://app.eavehome.app">app.eavehome.app</a> and in the iOS and Android apps unless noted. Nothing here needs a request to us. Deleting a record is permanent.</p>
+
+      <h3>Projects, tasks, appliances and other records</h3>
+      <ol>
+        <li>Open the record: a project, task, reminder, appliance or system, contractor, space or life event.</li>
+        <li>Choose the trash icon or <strong>Remove</strong> in its detail view. Edit and delete always live in the detail view, never on the list.</li>
+        <li>Confirm. The record, its notes and its history are deleted right away.</li>
+      </ol>
+
+      <h3>Documents and photos</h3>
+      <ol>
+        <li>Go to <strong>Memory</strong>, then <strong>Documents</strong>.</li>
+        <li>On the document's row choose <strong>Remove</strong>, then <strong>Remove it</strong>.</li>
+        <li>The stored file is erased along with the facts Eave read from it. Links to it on appliances or systems disappear.</li>
+      </ol>
+      <p>Photos belong to the record they were captured for. Deleting that project or record erases its photos, and deleting your account erases every photo. If you need one photo removed on its own, write to us using the form below and we will do it by hand.</p>
+
+      <h3>Connected sources (Gmail, Google Calendar and others)</h3>
+      <ol>
+        <li>In the web app, open the profile menu (your initials, top right) and choose <strong>Connected Sources</strong>.</li>
+        <li>Next to the source, choose <strong>Disconnect</strong>.</li>
+      </ol>
+      <p>Disconnecting deletes the access token Eave held, so Eave can no longer read that account. Items you already confirmed into your home stay until you delete them. You can also revoke Eave from your Google account at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. The mobile apps show your sources but connecting and disconnecting happen on the web. SmartThings imports use a one-time token that is never stored, so there is nothing to disconnect.</p>
+
+      <h2 id="whole-account">2. Delete your whole account</h2>
+      <p>Deleting your account removes everything listed under <a href="#deleted">what gets deleted</a>. It takes effect immediately and there is no undo.</p>
+
+      <div class="callout">
+        <p><strong>Before you delete.</strong> From <strong>Account &amp; Access</strong> you can export everything in your home as one file; do that first if you want a copy. Deleting your account does not cancel a subscription you bought through the App Store or Google Play. Cancel it in your Apple or Google subscription settings. A plan bought on the web is cancelled from <strong>Membership</strong>, then <strong>Manage billing</strong>; do that before you delete.</p>
+      </div>
+
+      <h3>In the web app</h3>
+      <ol>
+        <li>Sign in at <a href="https://app.eavehome.app/login">app.eavehome.app</a>.</li>
+        <li>Open the profile menu (your initials, top right) and choose <strong>Account &amp; Access</strong>.</li>
+        <li>Scroll to <strong>Danger Zone</strong> and choose <strong>Delete</strong>.</li>
+        <li>Eave checks what goes with your account and tells you, for example a home you share or an open escrow desk that needs handing over first.</li>
+        <li>Type <strong>DELETE</strong> to confirm, then choose <strong>Delete My Account</strong>. You are signed out and the account is gone.</li>
+      </ol>
+
+      <h3>In the iOS or Android app</h3>
+      <ol>
+        <li>Tap your profile button and choose <strong>Settings</strong>.</li>
+        <li>Scroll past <strong>Account</strong> to the bottom of the screen and tap <strong>Delete account</strong>.</li>
+        <li>Eave checks what goes with your account, then asks you to confirm. Confirm, and the account is deleted immediately.</li>
+      </ol>
+      <p>If Eave cannot delete the account on its own, it tells you why in one sentence and nothing is deleted. The usual reasons are that you are the last member of a firm, or you hold an open escrow desk nobody else can take over. Fix that in the app, or use the form below and we will close the account with you.</p>
+
+      <h2 id="request">3. Request deletion without the app</h2>
+      <p>You do not need to be signed in, or still have the app installed. Send us the email address on the account and we will take it from there. Because anyone can type an address here, we reply to that address first to confirm the request is really yours, then delete the account and its data within 30 days. Nothing is deleted on the strength of this form alone.</p>
+
+      <form id="delete-form" class="del-form" novalidate>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-field">
+          <label class="form-label" for="d-email">Email address on your Eave account (required)</label>
+          <input class="form-input" type="email" id="d-email" name="email" required autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="d-email-hint d-email-error">
+          <p class="form-hint" id="d-email-hint">The address you sign in with. We only use it to verify and complete this request.</p>
+          <p class="form-error" id="d-email-error" hidden>Enter the email address on your account, like name@example.com.</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="d-note">Note (optional)</label>
+          <textarea class="form-textarea" id="d-note" name="note" maxlength="1500" aria-describedby="d-note-hint"></textarea>
+          <p class="form-hint" id="d-note-hint">Anything we should know. For example, that you only want specific data removed, or that you no longer have access to the app.</p>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-jade" id="d-submit">Send deletion request</button>
+        </div>
+        <p class="form-error" id="d-form-error" role="alert" hidden></p>
+      </form>
+      <div class="form-success" id="d-success" role="status" tabindex="-1" hidden></div>
+
+      <p class="alt">Prefer email? Write to <a href="mailto:support@eaveproperty.com?subject=Delete%20my%20Eave%20account">support@eaveproperty.com</a> with the subject “Delete my Eave account” from the address on your account. The same verification and 30-day timeline apply.</p>
+
+      <h2 id="deleted">4. What gets deleted</h2>
+      <p>When your account is deleted, in the app or by request, we delete:</p>
+      <ul>
+        <li><strong>Your profile and sign-in:</strong> name, email address, password, Google sign-in link, sessions and the device tokens used for push notifications.</li>
+        <li><strong>Your properties:</strong> every home, space and area you own, with its address, details and property context.</li>
+        <li><strong>Your records:</strong> projects, tasks and task history, reminders, appliances and systems, contractors, purchase records, life events, score history and badges.</li>
+        <li><strong>Documents and photos:</strong> the stored files and the facts Eave read from them.</li>
+        <li><strong>Notes:</strong> on every record and search you own.</li>
+        <li><strong>Connected-source tokens:</strong> Gmail, Google Calendar and any other linked account. Eave never stored the contents of your mailbox; items you confirmed into your home are deleted with the records above.</li>
+        <li><strong>Home searches you own as a buyer</strong>, including their candidates, documents and questions.</li>
+        <li><strong>Your household memberships</strong>, and any Eave access you were paying for on someone else's behalf.</li>
+      </ul>
+      <p>Data you added to a home that someone else owns, such as a household member's home or a Partner's firm, belongs to that home and stays with its owner. Your name on those entries is removed.</p>
+
+      <h2 id="kept">5. What we keep, and for how long</h2>
+      <p>We keep as little as the law and ordinary bookkeeping require. None of it lets anyone open your home record again.</p>
+      <div class="table-wrap">
+        <table class="retention">
+          <caption>Retention after your account is deleted</caption>
+          <thead>
+            <tr><th scope="col">What</th><th scope="col">How long</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Encrypted database backups</td>
+              <td>Up to 7 days</td>
+              <td>Daily backups are kept for 7 days for disaster recovery, then overwritten. Deleted data is never restored from them except to recover the whole service from an outage.</td>
+            </tr>
+            <tr>
+              <td>Billing and payment records</td>
+              <td>Up to 7 years</td>
+              <td>Invoices, receipts, refunds and subscription history, held with our payment processors (Stripe on the web; Apple, Google and RevenueCat for the mobile apps). Required for tax and accounting. These records contain no home data.</td>
+            </tr>
+            <tr>
+              <td>Anonymized usage records</td>
+              <td>Kept</td>
+              <td>AI usage and credit ledger entries lose their link to you the moment the account is deleted. What remains is counts and costs with no name, email or home attached.</td>
+            </tr>
+            <tr>
+              <td>Support conversations</td>
+              <td>Up to 2 years</td>
+              <td>Messages you sent to support, including this request, so we can show a deletion was asked for and done.</td>
+            </tr>
+            <tr>
+              <td>Fraud prevention and legal holds</td>
+              <td>As long as the matter requires</td>
+              <td>Where we must keep something to prevent abuse, resolve a dispute, or meet a legal obligation. This is rare and limited to what that purpose needs.</td>
+            </tr>
+            <tr>
+              <td>Other people's own records</td>
+              <td>Theirs to keep</td>
+              <td>A Partner who worked an escrow with you keeps their own record of the dates, marked as a former client, without your documents, notes or details. A household member keeps their own home.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Timing: deletion in the app is immediate. A request made through this page or by email is completed within 30 days of our confirming it with you. Our <a href="/privacy#retention">Privacy Policy</a> says the same thing, and governs if the two ever differ.</p>
+
+      <h2 id="contact">6. Contact</h2>
+      <p>Questions about deletion, or a request you would rather make another way:</p>
+      <address class="address">
+        Eave Property LLC<br>
+        1282 Woodside Dr<br>
+        San Luis Obispo, CA 93401<br>
+        <a href="mailto:support@eaveproperty.com">support@eaveproperty.com</a>
+      </address>
+
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="wordmark" style="font-size:24px;color:var(--bg);">eave</a>
+          <p class="footer-tagline">Home Upkeep Without the Overwhelm.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="/features">Features</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+        <ul class="footer-links">
+          <li><span style="color:var(--footer-text);">App Store — soon</span></li>
+          <li><span style="color:var(--footer-text);">Google Play — soon</span></li>
+          <li><a href="https://app.eavehome.app">app.eavehome.app</a></li>
+        </ul>
+        <div class="footer-social">
+          <div class="footer-social-label">FOLLOW</div>
+          <a href="https://www.instagram.com/eavehomeupkeep/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--footer-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram</a>
+          <a href="https://www.facebook.com/eavehomeupkeep" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--footer-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a>
+          <a href="https://www.linkedin.com/company/eave-home-upkeep/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--footer-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Eave · <a href="mailto:support@eaveproperty.com" style="color:var(--footer-text);text-decoration:none;">support@eaveproperty.com</a></p>
+        <div class="footer-legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+          <a href="/accessibility">Accessibility</a>
+          <a href="/delete-account">Delete account</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.addEventListener('click', (e) => { if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) mobileMenu.classList.remove('open'); });
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+  </script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('delete-form');
+      if (!form) return;
+      var emailEl = document.getElementById('d-email');
+      var emailErr = document.getElementById('d-email-error');
+      var noteEl = document.getElementById('d-note');
+      var btn = document.getElementById('d-submit');
+      var formErr = document.getElementById('d-form-error');
+      var ok = document.getElementById('d-success');
+      var FALLBACK = 'Email support@eaveproperty.com with the subject “Delete my Eave account” and we will handle it from there.';
+
+      function setEmailError(on) {
+        emailErr.hidden = !on;
+        emailEl.setAttribute('aria-invalid', on ? 'true' : 'false');
+      }
+      emailEl.addEventListener('input', function () { if (emailEl.validity.valid) setEmailError(false); });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value) return;
+        formErr.hidden = true;
+        var email = emailEl.value.trim();
+        if (!email || !emailEl.validity.valid) { setEmailError(true); emailEl.focus(); return; }
+        setEmailError(false);
+        var note = noteEl.value.trim().slice(0, 1500);
+        btn.disabled = true;
+        var label = btn.textContent;
+        btn.textContent = 'Sending…';
+
+        fetch('https://app.eavehome.app/api/support', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: email,
+            email: email,
+            category: 'Account deletion',
+            subject: 'Delete my Eave account',
+            message: note || 'Please delete the Eave account for this email address. (No note added.)',
+            pageUrl: location.href,
+            source: 'marketing-delete-account'
+          })
+        }).then(function (res) {
+          if (res.ok) {
+            form.hidden = true;
+            ok.textContent = '';
+            var p = document.createElement('p');
+            p.appendChild(document.createTextNode('Thanks. We have your request for '));
+            var b = document.createElement('strong'); b.textContent = email; p.appendChild(b);
+            p.appendChild(document.createTextNode('. We will reply to that address to confirm it is you, then delete the account and its data within 30 days.'));
+            ok.appendChild(p);
+            ok.hidden = false;
+            ok.focus();
+            return;
+          }
+          formErr.textContent = (res.status === 429)
+            ? 'Too many requests from this address just now. Give it an hour, or ' + FALLBACK.charAt(0).toLowerCase() + FALLBACK.slice(1)
+            : 'We could not send that just now. ' + FALLBACK;
+          formErr.hidden = false;
+          btn.disabled = false; btn.textContent = label;
+        }).catch(function () {
+          formErr.textContent = 'We could not reach our server. Check your connection and try again, or ' + FALLBACK.charAt(0).toLowerCase() + FALLBACK.slice(1);
+          formErr.hidden = false;
+          btn.disabled = false; btn.textContent = label;
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
