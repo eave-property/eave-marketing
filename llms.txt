@@ -68,7 +68,7 @@
   apps coming soon.
 - Data policy: connected-source imports are reviewed by the owner before
   anything saves. Documents and photos are private. Export at every plan.
-- Company: Limbic Ventures. Support: support@eavehome.app.
+- Company: Limbic Ventures. Support: support@eaveproperty.com.
 
 ## Key pages
 
@@ -146,7 +146,7 @@ Decide what's next:
 - https://eavehome.app/guides/passing-your-home-record-to-the-buyer — what conveys with a house; transferring the home's record
 - https://eavehome.app/privacy — privacy policy
 - https://eavehome.app/delete-account — delete your Eave account or data (Eave Property LLC): in-app steps, a no-sign-in request form, what is deleted, retention (backups 7 days, billing records 7 years)
-- https://eavehome.app/accessibility — accessibility statement (WCAG 2.2 AA target, 2.1 AA reported; support@eavehome.app, 3 business days)
+- https://eavehome.app/accessibility — accessibility statement (WCAG 2.2 AA target, 2.1 AA reported; support@eaveproperty.com, 3 business days)
 - https://eavehome.app/terms — terms of service
 - https://eavehome.app/fair-housing — fair-housing statement: district name and official links only; Eave never rates schools, neighbourhoods, or people
 - https://eavehome.app/guides/what-a-listing-never-tells-you
